@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ResDataSet" targetNamespace="http://tempuri.org/ResDataSet.xsd" xmlns:mstns="http://tempuri.org/ResDataSet.xsd" xmlns="http://tempuri.org/ResDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Resdb1ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Resdb1ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.kurs.Properties.Settings.GlobalReference.Default.Resdb1ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Resdb1ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        cl.fullname AS ФИО_клиента, res.date_start AS Дата_заезда, res.date_end AS Дата_выезда, c.name AS Название_коттеджа, DATEDIFF(DAY, res.date_start, res.date_end) AS Срок_проживания, cd.price AS Суточная_цена,
+                          DATEDIFF(DAY, res.date_start, res.date_end) * cd.price AS Стоимость_проживания, res.status AS Статус_брони, em.fullname_em AS Ответственный_сотрудник
+FROM            Reservation AS res INNER JOIN
+                         Сottage AS c ON c.ID = res.ID_cot INNER JOIN
+                         CottageDetails AS cd ON cd.ID = c.ID INNER JOIN
+                         Clients AS cl ON cl.ID = res.ID_cl INNER JOIN
+                         Employees AS em ON em.ID = res.ID_em
+ORDER BY Дата_заезда</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ФИО_клиента" DataSetColumn="ФИО_клиента" />
+              <Mapping SourceColumn="Дата_заезда" DataSetColumn="Дата_заезда" />
+              <Mapping SourceColumn="Дата_выезда" DataSetColumn="Дата_выезда" />
+              <Mapping SourceColumn="Название_коттеджа" DataSetColumn="Название_коттеджа" />
+              <Mapping SourceColumn="Срок_проживания" DataSetColumn="Срок_проживания" />
+              <Mapping SourceColumn="Суточная_цена" DataSetColumn="Суточная_цена" />
+              <Mapping SourceColumn="Стоимость_проживания" DataSetColumn="Стоимость_проживания" />
+              <Mapping SourceColumn="Статус_брони" DataSetColumn="Статус_брони" />
+              <Mapping SourceColumn="Ответственный_сотрудник" DataSetColumn="Ответственный_сотрудник" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ResDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ResDataSet" msprop:Generator_UserDSName="ResDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ФИО_клиента" msprop:Generator_ColumnVarNameInTable="columnФИО_клиента" msprop:Generator_ColumnPropNameInRow="ФИО_клиента" msprop:Generator_ColumnPropNameInTable="ФИО_клиентаColumn" msprop:Generator_UserColumnName="ФИО_клиента">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Дата_заезда" msprop:Generator_ColumnVarNameInTable="columnДата_заезда" msprop:Generator_ColumnPropNameInRow="Дата_заезда" msprop:Generator_ColumnPropNameInTable="Дата_заездаColumn" msprop:Generator_UserColumnName="Дата_заезда" type="xs:dateTime" />
+              <xs:element name="Дата_выезда" msprop:Generator_ColumnVarNameInTable="columnДата_выезда" msprop:Generator_ColumnPropNameInRow="Дата_выезда" msprop:Generator_ColumnPropNameInTable="Дата_выездаColumn" msprop:Generator_UserColumnName="Дата_выезда" type="xs:dateTime" />
+              <xs:element name="Название_коттеджа" msprop:Generator_ColumnVarNameInTable="columnНазвание_коттеджа" msprop:Generator_ColumnPropNameInRow="Название_коттеджа" msprop:Generator_ColumnPropNameInTable="Название_коттеджаColumn" msprop:Generator_UserColumnName="Название_коттеджа">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Срок_проживания" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnСрок_проживания" msprop:Generator_ColumnPropNameInRow="Срок_проживания" msprop:Generator_ColumnPropNameInTable="Срок_проживанияColumn" msprop:Generator_UserColumnName="Срок_проживания" type="xs:int" minOccurs="0" />
+              <xs:element name="Суточная_цена" msprop:Generator_ColumnVarNameInTable="columnСуточная_цена" msprop:Generator_ColumnPropNameInRow="Суточная_цена" msprop:Generator_ColumnPropNameInTable="Суточная_ценаColumn" msprop:Generator_UserColumnName="Суточная_цена" type="xs:int" />
+              <xs:element name="Стоимость_проживания" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnСтоимость_проживания" msprop:Generator_ColumnPropNameInRow="Стоимость_проживания" msprop:Generator_ColumnPropNameInTable="Стоимость_проживанияColumn" msprop:Generator_UserColumnName="Стоимость_проживания" type="xs:int" minOccurs="0" />
+              <xs:element name="Статус_брони" msprop:Generator_ColumnVarNameInTable="columnСтатус_брони" msprop:Generator_ColumnPropNameInRow="Статус_брони" msprop:Generator_ColumnPropNameInTable="Статус_брониColumn" msprop:Generator_UserColumnName="Статус_брони">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ответственный_сотрудник" msprop:Generator_ColumnVarNameInTable="columnОтветственный_сотрудник" msprop:Generator_ColumnPropNameInRow="Ответственный_сотрудник" msprop:Generator_ColumnPropNameInTable="Ответственный_сотрудникColumn" msprop:Generator_UserColumnName="Ответственный_сотрудник">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
